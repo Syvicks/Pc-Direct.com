@@ -1,0 +1,73 @@
+{
+    "name": "symfony/framework-standard-edition",
+    "description": "The \"Symfony Standard Edition\" distribution",
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.3.*",
+        "doctrine/orm": ">=2.2.3,<2.4-dev",
+        "doctrine/doctrine-bundle": "1.2.*@dev",
+        "twig/extensions": "1.0.*",
+        "symfony/assetic-bundle": "2.3.*",
+        "symfony/swiftmailer-bundle": "2.3.*",
+        "symfony/monolog-bundle": "2.3.*",
+        "sensio/distribution-bundle": "2.3.*",
+        "sensio/framework-extra-bundle": "2.3.*",
+        "sensio/generator-bundle": "2.3.*",
+        "jms/security-extra-bundle": "1.5.*",
+        "jms/di-extra-bundle": "1.4.*",
+        "friendsofsymfony/user-bundle": "dev-master",
+        "gregwar/captcha-bundle": "dev-master",
+        "mathiasverraes/money": "1.3.*@dev",
+        "sylius/flow-bundle": "0.1.*@dev",
+        "knplabs/gaufrette": "0.2.*@dev",
+        "knplabs/knp-gaufrette-bundle": "0.2.*@dev",
+        "athari/yalinqo": "dev-master",
+        "omnipay/omnipay": "dev-master",
+        "sylius/omnipay-bundle": "0.9.*@dev",
+        "sylius/installer-bundle": "0.1.*@dev",
+        "knplabs/knp-snappy": "dev-master",
+        "knplabs/knp-snappy-bundle": "dev-master",
+        "sylius/product-bundle": "0.1.*dev",
+        "sylius/variable-product-bundle": "0.1.*dev",
+        "sylius/sales-bundle": "0.2.*@dev",
+        "sylius/cart-bundle": "0.5.*@dev",
+        "sylius/money-bundle": "0.2.*@dev",
+        "sylius/taxation-bundle": "0.3.*@dev",
+        "sylius/shipping-bundle": "0.2.*@dev",
+        "sylius/addressing-bundle": "0.2.*@dev",
+        "sylius/promotions-bundle": "0.2.*@dev",
+        "sylius/inventory-bundle": "0.3.0",
+        "sylius/taxonomies-bundle": "0.2.*@dev",
+        "sylius/settings-bundle": "0.2.*@dev",
+        "sylius/payments-bundle": "0.2.*@dev",
+        "sylius/sylius": "dev-master"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ],
+        "post-update-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "minimum-stability": "alpha",
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web",
+        "branch-alias": {
+            "dev-master": "2.2-dev"
+        }
+    }
+}

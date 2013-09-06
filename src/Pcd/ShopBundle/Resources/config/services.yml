@@ -1,0 +1,11 @@
+parameters:
+#    pcd_shop.example.class: Pcd\ShopBundle\Example
+
+services:
+#    pcd_shop.example:
+#        class: %pcd_shop.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+#services:
+    #pcd.cart_item_resolver:
+        #class: Pcd\ShopBundle\Cart\ItemResolver
+        #arguments: ['@doctrine.orm.entity_manager']

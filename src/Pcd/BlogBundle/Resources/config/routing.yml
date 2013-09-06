@@ -1,0 +1,44 @@
+# src/Pcd/BlogBundle/Resources/config/routing.yml
+
+pcdblog_home:
+    pattern:  /
+    defaults: { _controller: PcdBlogBundle:Home:index }
+
+# Routes des services
+pcdblog_services:
+    pattern:  /services
+    defaults: { _controller: PcdBlogBundle:Services:index }
+
+pcdblog_ponctuel:
+    pattern:  /services/depannage_sur_place
+    defaults: { _controller: PcdBlogBundle:Ponctuel:index }
+
+pcdblog_distance:
+    pattern:  /services/depannage_a_distance
+    defaults: { _controller: PcdBlogBundle:Distance:index }
+
+pcdblog_formation:
+    pattern:  /services/formation
+    defaults: { _controller: PcdBlogBundle:Formation:index }
+
+pcdblog_guestbook:
+  pattern:  /guestbook
+  defaults: { _controller: PcdBlogBundle:Guestbook:index }
+  requirements:
+    _method: GET|POST
+    
+pcdblog_guestbook_delete:
+    pattern:  /guestbook/delete/{id}
+    defaults: { _controller: PcdBlogBundle:Guestbook:delete }
+    requirements:
+        id:  \d+
+
+pcdblog_contact:
+    pattern:  /contact
+    defaults: { _controller: PcdBlogBundle:Contact:index }
+    requirements:
+        _method:  GET|POST
+
+pcdblog_about:
+    pattern:  /about
+    defaults: { _controller: PcdBlogBundle:About:index }

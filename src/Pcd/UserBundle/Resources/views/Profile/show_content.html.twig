@@ -1,0 +1,25 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+    <h1>Ma Fiche d'Identité</h1>
+    <div class="fos_user_user_show">
+        <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+        <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+        <p>Nom : {{ user.nom }}</p>
+        <p>Prenom : {{ user.prenom }}</p>
+        <p>Adresse : {{ user.numVoieClient }} 
+           rue {{ user.libelleVoieClient }}</p>
+        <p>Code Postal : {{ user.cpClient }} 
+        <p>Ville : {{ user.villeClient }}</p>
+        <p>Pays : {{ user.paysClient }}</p>
+        <p>N° de téléphone : {{ user.tel }}</p>
+    </div>
+    <br>
+    <div class="user_show_modif">
+    <h3>Modifier mes Coordonnées</h3>
+        <ul>
+            <li><a href="{{ path('fos_user_profile_edit') }}" class="user_show_edit">Fiche d'Identité</a></li>
+            <li><a href="{{ path('fos_user_change_password') }}" class="user_show_mdp">Mot de passe</a></li>
+        </ul>
+    </div>
+{% endblock %}

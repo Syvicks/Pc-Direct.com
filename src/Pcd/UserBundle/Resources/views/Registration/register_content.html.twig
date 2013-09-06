@@ -1,0 +1,31 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <h2>Vous n'êtes pas connecté !</h2>
+{% else %}
+    <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+        {{ form_errors(form) }}
+        <h1>Inscription</h1>
+        <div>
+            {{ form_label(form.username) }}
+            <br><br>
+            {{ form_widget(form.username) }}
+            <br><br>
+            {{ form_label(form.email) }}
+            <br><br>
+            {{ form_widget(form.email) }}
+            <br> <br>
+            {{ form_label(form.plainPassword.first) }}
+            <br> <br>
+            {{ form_widget(form.plainPassword.first) }}
+            <br> <br>
+            {{ form_label(form.plainPassword.second) }}
+            <br> <br>
+            {{ form_widget(form.plainPassword.second) }}
+            <br> <br>
+            <br>
+            {{ form_rest(form) }}
+            <input type="submit" value="{{ 'registration.submit'|trans }}" />
+        </div>
+    </form>
+{% endif %}

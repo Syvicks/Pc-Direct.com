@@ -1,0 +1,48 @@
+{# src/Pcd/BlogBundle/Resources/views/Contact/index.html.twig #}
+
+{% extends "::layout.html.twig" %}
+ 
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+    <h1>FORMULAIRE DE CONTACT</h1>
+    <p>
+        Remplissez notre Formulaire de Contact afin d'être contacté dans les meilleurs délais.
+        </br></br>
+        Vous pouvez également nous joindre par téléphone au 00 00 00 00 00 
+        </br></br>
+        du Lundi au Vendredi de 9h00 à 20h00 et le Samedi de 10h00 à 15H00.
+    </p>
+ 
+    {% if app.session.flashbag.get('contact-notice') %}
+        <div class="contact-notice">
+            {{ app.session.flash('contact-notice') }}
+        </div>
+    {% endif %}
+    
+    <form action="{{ path('pcdblog_contact') }}" method="post" {{ form_enctype(form) }} class="contact">
+        {{ form_errors(form) }}
+        
+        {{ form_label(form.name) }}
+            </br> </br>
+        {{ form_widget(form.name) }}
+            </br> </br>
+        {{ form_label(form.email) }}
+            </br> </br>
+        {{ form_widget(form.email) }}
+            </br> </br>
+        {{ form_label(form.subject) }}
+            </br> </br>
+        {{ form_widget(form.subject) }}
+            </br> </br>
+        {{ form_label(form.body) }}
+            </br> </br>
+        {{ form_widget(form.body) }}
+            </br> </br>
+        {{ form_rest(form) }}
+
+        <input type="submit" value="Envoyer" />
+    </form>
+{% endblock %}
+
+

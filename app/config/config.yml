@@ -1,0 +1,154 @@
+# app/config/config.yml
+
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: "@PcdBlogBundle/Resources/config/config.yml" }
+
+framework:
+    #esi:             ~
+    translator:      { fallback: %locale% }
+    secret:          %secret%
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: %kernel.debug%
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+        #assets_version: SomeVersionScheme
+    default_locale:  "%locale%"
+    trusted_proxies: ~
+    session:         ~
+    fragments:       ~
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    bundles:        [ ]
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        #closure:
+        #    jar: %kernel.root_dir%/Resources/java/compiler.jar
+        #yui_css:
+        #    jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver, add the path in parameters.yml
+        # e.g. database_path: %kernel.root_dir%/data/data.db3
+        # path:     %database_path%
+
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: %mailer_transport%
+    host:      %mailer_host%
+    username:  %mailer_user%
+    password:  %mailer_password%
+    spool:     { type: memory }
+    
+parameters:
+    # Formulaire contact email address
+    blogger_blog.emails.contact_email: assistant@email.com
+
+# FOSUserBundle Configuration
+fos_user:
+    db_driver:     orm                        # Le type de BDD à utiliser, nous utilisons l'ORM Doctrine depuis le début
+    firewall_name: main                       # Le nom du firewall derrière lequel on utilisera ces utilisateurs
+    user_class:    Pcd\UserBundle\Entity\User # La classe de l'entité User que nous utilisons
+    profile:
+        form:
+            type: pcd_user_profile
+    registration:
+        form:
+            type: pcd_user_registration
+
+# Captcha Configuration
+gregwar_captcha:
+    width: 200
+    height: 50
+    length: 6
+
+# Sylius Configuration
+sylius_product:
+    driver: doctrine/orm
+    #engine: twig
+    classes:
+        product:
+            model: Sylius\Bundle\ProductBundle\Model\Product
+            controller: Sylius\Bundle\ResourceBundle\Controller\ResourceController
+            #repository: ~
+            form: Sylius\Bundle\AssortmentBundle\Form\Type\ProductType
+        property:
+            model: Sylius\Bundle\ProductBundle\Model\Property
+            controller: Sylius\Bundle\ResourceBundle\Controller\ResourceController
+            #repository: ~
+            form: Sylius\Bundle\AssortmentBundle\Form\Type\PropertyType
+        prototype:
+            model: Sylius\Bundle\ProductBundle\Model\Prototype
+            controller: Sylius\Bundle\ProductBundle\Controller\PrototypeController
+            #repository: ~
+            form: Sylius\Bundle\AssortmentBundle\Form\Type\PrototypeType
+
+sylius_variable_product:
+    classes:
+        variant:
+            model: Sylius\Bundle\VariableProductBundle\Model\Variant
+            controller: Sylius\Bundle\VariableProductBundle\Controller\VariantController
+            #repository: ~
+            form: Sylius\Bundle\VariableProductBundle\Form\Type\ProductType
+        option:
+            model: Sylius\Bundle\VariableProductBundle\Model\Option
+            controller: Sylius\Bundle\ResourceBundle\Controller\ResourceController
+            #repository: ~
+            form: Sylius\Bundle\VariableProductBundle\Form\Type\PropertyType
+        option_value:
+            model: Sylius\Bundle\VariableProductBundle\Model\OptionValue
+            controller: Sylius\Bundle\ResourceBundle\Controller\ResourceController
+            #repository: ~
+            form: Sylius\Bundle\VariableProductBundle\Form\Type\OptionValueType
+    validation_groups:
+        variant: [sylius]
+        option: [sylius]
+        option_value: [sylius]
+
+#sylius_cart:
+    #driver: doctrine/orm
+    #engine: twig
+    #resolver: pcd.cart_item_resolver
+    #provider: sylius.cart_provider.default
+    #storage: sylius.cart_storage.session
+    #classes:
+        #cart:
+            #model: Pcd\ShopBundle\Entity\CartItem
+            #controller: Sylius\Bundle\CartBundle\Controller\CartController
+            #repository: ~
+            #form: Sylius\Bundle\CartBundle\Form\Type\CartType
+
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true
+            timestampable: true
+    

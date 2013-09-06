@@ -1,0 +1,54 @@
+{# src/Pcd/BlogBundle/Resources/views/Contact/index.html.twig #}
+
+{% extends "::layout.html.twig" %}
+{% form_theme form 'PcdBlogBundle:Guestbook:captcha.html.twig' %}  
+
+{% block title %}Livre d'or{% endblock %}
+
+{% block body %}
+    <h1>Donnez votre avis !</h1>
+    <form action="{{ path('pcdblog_guestbook') }}" method="post" {{ form_enctype(form) }} class="guestbook">
+        <div>
+            {{ form_errors(form) }}
+
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+            </br> </br>
+            {{ form_label(form.emailAddress) }}
+            {{ form_widget(form.emailAddress) }}
+            </br> </br>
+            {{ form_label(form.note) }}
+            {{ form_widget(form.note) }}
+            </br> </br>
+            {{ form_label(form.body) }}
+            {{ form_widget(form.body) }}
+            </br> </br>
+            {{ form_label(form.captcha) }}
+            {{ form_widget(form.captcha) }}
+            </br></br>
+            {{ form_rest(form) }}
+            <input type="submit" value="Envoyer" />
+        </div>
+    </form>
+    </br> </br>
+    <h3>Livre d'Or</h3>
+    <div class="guestbook_entries">
+        {% for guestbook in entries %}
+            <div class="guestbook_autor">
+                Envoyé par {{ guestbook.name }} le {{ guestbook.createAt|date('d/m/y') }} à {{  guestbook.createAt|date('H:i') }}
+                </br>
+                Note : {{ guestbook.note }} / 5
+                {% if is_granted("ROLE_SUPER_ADMIN") %}
+                    <a href="{{ path('pcdblog_guestbook_delete', { 'id': guestbook.id }) }}">Supprimer</a>
+                {% endif %}
+            </div>
+            <div class="guestbook_msg">
+                {{ guestbook.body }}
+            </div>
+        {% else %}
+            Pas (encore) de signature !!! :-(
+        {% endfor %}
+    </div>
+{% endblock %}
+
+

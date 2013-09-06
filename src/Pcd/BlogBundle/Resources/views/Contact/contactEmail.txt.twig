@@ -1,0 +1,8 @@
+{# src/Pcd/BlogBundle/Resources/views/Contact/contactEmail.txt.twig #}
+
+Une demande de contact a été faite par {{ contact.name }} à {{ "now" | date("Y-m-d H:i") }}.
+
+Expéditeur : {{ contact.email }}
+Sujet : {{ contact.subject }}
+Message :
+{{ contact.body }}

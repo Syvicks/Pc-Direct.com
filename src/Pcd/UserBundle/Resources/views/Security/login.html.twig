@@ -1,0 +1,36 @@
+{% extends "PcdUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div>{{ error|trans }}</div>
+{% endif %}
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <h2>Vous êtes déja connecté !</h2>
+{% else %}
+    <form action="{{ path("fos_user_security_check") }}" method="post" class="fos_user_security">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+        <label for="username">{{ 'security.login.username'|trans }}</label>
+        <br><br>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+        <br>
+
+        <label for="password">{{ 'security.login.password'|trans }}</label>
+        <br><br>
+        <input type="password" id="password" name="_password" required="required" />
+
+        <br><br>
+
+        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+        <br><br>
+
+        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+    </form>
+{% endif %}
+{% endblock fos_user_content %}

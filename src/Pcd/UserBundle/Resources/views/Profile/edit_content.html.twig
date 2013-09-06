@@ -1,0 +1,59 @@
+{# src/Pcd/UserBundle/Resources/Views/Profile/edit_content.html.twig #}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+<h1>Modifier mon profile</h1>
+
+<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+    {{ form_errors(form) }}
+    <div class="user_edit_gauche">
+        {{ form_label(form.username) }}
+        <br><br>
+        {{ form_widget(form.username) }}
+        <br> <br>
+        {{ form_label(form.email) }}
+        <br><br>
+        {{ form_widget(form.email) }}
+        <br> <br>
+        {{ form_label(form.nom) }}
+        <br> <br>
+        {{ form_widget(form.nom) }}
+        <br> <br>
+        {{ form_label(form.prenom) }}
+        <br> <br>
+        {{ form_widget(form.prenom) }}
+        <br> <br>
+        {{ form_label(form.current_password) }}
+        <br> <br>
+        {{ form_widget(form.current_password) }}
+        <br> <br>
+    </div>
+    <div class="user_edit_droite">
+        {{ form_label(form.numVoieClient) }}
+        <br><br>
+        {{ form_widget(form.numVoieClient) }}
+        <br> <br>
+        {{ form_label(form.libelleVoieClient) }}
+        <br> <br>
+        {{ form_widget(form.libelleVoieClient) }}
+        <br> <br>
+        {{ form_label(form.cpClient) }}
+        <br> <br>
+        {{ form_widget(form.cpClient) }}
+        <br> <br>
+        {{ form_label(form.villeClient) }}
+        <br> <br>
+        {{ form_widget(form.villeClient) }}
+        <br> <br>
+        {{ form_label(form.paysClient) }}
+        <br> <br>
+        {{ form_widget(form.paysClient) }}
+        <br> <br>
+        {{ form_label(form.tel) }}
+        <br> <br>
+        {{ form_widget(form.tel) }}
+        <br> <br>
+        {{ form_rest(form) }}
+    </div>
+    <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+</form>

@@ -1,0 +1,5 @@
+# src/Pcd/BlogBundle/Resources/config/config.yml
+
+parameters:
+    # Blogger contact email address
+    pcd_blog.emails.contact_email: contact@email.com

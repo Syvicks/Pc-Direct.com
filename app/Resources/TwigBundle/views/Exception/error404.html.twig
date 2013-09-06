@@ -1,0 +1,30 @@
+{# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+<title>{% block title %}{{ status_text }}{% endblock %}</title>
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('Bundles/pcdblog/css/error404.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('Bundles/pcdblog/css/style.css') }}" type="text/css" /> 
+{% endblock %}
+    </head>
+
+<body>
+    <div id="global">
+        <p class="un">ERREUR :</p>
+        <p class="de">Désolé la page que vous recherchez n'existe pas !!!</p>
+        <p class="tr">404</h2>
+        <div id="avatar"> </div>
+            <p class="qu">Vous pouvez :</p> 
+            <ul class="puces">
+                <li><a href="{{ path('pcdblog_home') }}" class="icon-home">Retourner à l'accueil</a></li>
+                <li class="icon-mug">Aller boire un café =p</li>
+            </ul>
+    </div>
+</body>
+  
+</html>
